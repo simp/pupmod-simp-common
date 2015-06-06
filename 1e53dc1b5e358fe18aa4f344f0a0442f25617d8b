@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_482dda45",
+        "filename": ".travis.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-06T17:52:47Z",
+      "side": 1,
+      "message": "The causes the Travis job to hang in an indefinite \"Pending\" status: https://travis-ci.org/simp/pupmod-simp-common/builds/65445816",
+      "revId": "1e53dc1b5e358fe18aa4f344f0a0442f25617d8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
