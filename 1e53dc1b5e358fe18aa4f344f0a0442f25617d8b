@@ -16,6 +16,52 @@
       "revId": "1e53dc1b5e358fe18aa4f344f0a0442f25617d8b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_8c3d24be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-11T03:20:30Z",
+      "side": 1,
+      "message": "Please wrap Jira issue in first line in parentheses [ex: \"(SIMP-30)\" instead of \"SIMP-30\"].",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "1e53dc1b5e358fe18aa4f344f0a0442f25617d8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_ac4ca871",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-11T03:20:30Z",
+      "side": 1,
+      "message": "This uses the old Redmine syntax.  Use the new Jira issue command instead:\n\"SIMP-30 #close Created parse function\"\nSee: https://simp-project.atlassian.net/wiki/display/SD/Contributing+to+SIMP",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "1e53dc1b5e358fe18aa4f344f0a0442f25617d8b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
