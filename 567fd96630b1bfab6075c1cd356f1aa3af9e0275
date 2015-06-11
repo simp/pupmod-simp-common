@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "facab960_27b0aef3",
+        "filename": "Gemfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-11T19:35:53Z",
+      "side": 1,
+      "message": "This line causes Travis builds to fail (which is better than hanging) because there is no .gemspec file.  There will never be a .gemspec in a Puppet module. \n\nThis is an informational note and not a blocker; LittleBigNickJr is working on a grand unified Gemfile that will work for all modules (prior to SIMP-21).",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 7
+      },
+      "revId": "567fd96630b1bfab6075c1cd356f1aa3af9e0275",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "facab960_07848a0a",
         "filename": "lib/puppet/parser/functions/get_ports.rb",
         "patchSetId": 2
