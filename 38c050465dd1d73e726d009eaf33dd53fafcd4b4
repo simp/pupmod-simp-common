@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_d864434b",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-12T14:40:17Z",
+      "side": 1,
+      "message": "\"!\" not required here (it modifies tmp_host[1])",
+      "range": {
+        "startLine": 37,
+        "startChar": 39,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "38c050465dd1d73e726d009eaf33dd53fafcd4b4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
