@@ -1,10 +1,10 @@
 module Puppet::Parser::Functions
   newfunction(
-    :strip_ports,
+    :get_ports,
     :type => :rvalue,
     :doc  => <<-EOM) do |args|
        Take an array of items that may contain port numbers and appropriately return
-       the non-port portion. Works with hostnames, IPv4, and IPv6.
+       the port portion. Works with hostnames, IPv4, and IPv6.
 
       Arguments: hosts
         - 'hosts'        => Array of hostnames which may contain port numbers.
@@ -13,8 +13,13 @@ module Puppet::Parser::Functions
     raise Puppet::ParseError, "You must pass a list of hosts." if args.empty?
 
     hosts = Array(args).flatten
-    stripped_hosts = function_parse_hosts([hosts]).keys.uniq
+    parsed_hosts = function_parse_hosts([hosts])
 
-    stripped_hosts
+    ports = []
+    for key in parsed_hosts.keys
+      ports << parsed_hosts[key][:ports] if not parsed_hosts[key][:ports].nil?
+    end
+
+    ports
   end
 end
