@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "facab960_3fac2e35",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-15T15:56:50Z",
+      "side": 1,
+      "message": "Even better, without the bang: \n\n  hostname \u003d tmp_host[1].delete \"//\"",
+      "parentUuid": "facab960_87aeda83",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "567fd96630b1bfab6075c1cd356f1aa3af9e0275",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "facab960_a7c03e2b",
         "filename": "lib/puppet/parser/functions/strip_ports.rb",
         "patchSetId": 2
