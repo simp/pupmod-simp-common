@@ -3,7 +3,7 @@
     - rspec
     - yaml
   !ruby/sym yaml: 
-    !ruby/sym datadir: /home/thanos/Work/simp/5.0.X/src/puppet/modules/common/spec/fixtures/hieradata
+    !ruby/sym datadir: /home/chris/src/_simp/github/nick-markowski/pupmod-simp-common/spec/fixtures/hieradata
   !ruby/sym hierarchy: 
     - "%{spec_title}"
     - "%{module_name}"
