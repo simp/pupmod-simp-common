@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_1f784ac3",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-15T15:56:50Z",
+      "side": 1,
+      "message": "Only bang when you mean it.  Instead, use: \n\nhostname \u003d tmp_host[1].delete \"//\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 39,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "f78032bfff40e72c857db62b1ea0a0ebe4716c14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
