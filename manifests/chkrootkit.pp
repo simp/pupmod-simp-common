@@ -23,11 +23,13 @@ class common::chkrootkit (
   $weekday = '0',
   $destination = 'syslog'
 ) {
+  $l_command = $destination ? {
+    'syslog' => '/usr/sbin/chkrootkit -n | /bin/logger -p local6.notice -t chkrootkit',
+    default  => '/usr/sbin/chkrootkit -n'
+  }
+
   cron { 'chkrootkit':
-    command  => $destination ? {
-      'syslog' => '/usr/sbin/chkrootkit -n | /bin/logger -p local6.notice -t chkrootkit',
-      default  => '/usr/sbin/chkrootkit -n'
-    },
+    command  => $l_command,
     minute   => $minute,
     hour     => $hour,
     monthday => $monthday,
