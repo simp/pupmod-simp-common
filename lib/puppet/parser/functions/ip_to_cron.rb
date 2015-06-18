@@ -7,7 +7,7 @@
 #
 # Pulled from: http://projects.puppetlabs.com/projects/puppet/wiki/Cron_Patterns/8/diff
 # Author: ohadlevy@gmail.com
-# License: Apache License, Version 2.0
+# License: None
 #
 # example usage
 # ip_to_cron()     - returns one value between 0..59

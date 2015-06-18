@@ -140,10 +140,12 @@ module Puppet::Parser::Functions
         end
 
         keydir = "#{Puppet[:environmentpath]}/#{lookupvar('::environment')}/simp_autofiles/gen_passwd"
-
         if ( !File.directory?(keydir) )
             begin
                 FileUtils.mkdir_p(keydir,{:mode => 0750})
+                # This chown is applicable as long as it is applied
+                # by puppet, not puppetserver.
+                FileUtils.chown(puppet_user,puppet_group,keydir)
             rescue
                 raise Puppet::ParseError, "Could not make directory #{keydir}. Ensure that #{File.dirname(keydir)} is writable by '#{puppet_user}'"
                 return passwd
@@ -194,6 +196,10 @@ module Puppet::Parser::Functions
 
             tgt = File.new("#{keydir}/#{@id}","a+")
             tgt_hash = File.new("#{tgt.path}.salt","a+")
+            # These chowns are applicable as long as they are applied
+            # by puppet, not puppetserver.
+            FileUtils.chown(puppet_user,puppet_group,tgt.path)
+            FileUtils.chown(puppet_user,puppet_group,tgt_hash.path)
 
             # Create this if not there no matter what just in case we have an
             # upgraded system.

@@ -1,7 +1,7 @@
 Summary: Common Puppet Module
 Name: pupmod-common
 Version: 4.2.0
-Release: 17
+Release: 19
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
@@ -80,6 +80,12 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Fri May 01 2015 Kendall Moore <kmoore@keywcorp.com> - 4.2.0-19
+- Ensure <puppet_vardir>/simp directory gets created.
+
+* Tue Apr 28 2015 Nick Markowski <nmarkowski@keywcorp.com> - 4.2.0-18
+- Ensured the keygen space was puppet writeable.
+
 * Thu Apr 09 2015 Trevor Vaughan <tvaughan@onyxpoint.com>  - 4.2.0-17
 - passgen() now has the ability to select a complexity level and also has
   vastly improved error handling capabilities
@@ -193,7 +199,7 @@ fi
 * Thu Jun 26 2014 Nick Markowski <nmarkowski@keywcorp.com> - 4.2.0-2
 - Added a template for enabling/disabling FIPS in GRUB.
 
-* Mon Jun 26 2014 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.2.0-2
+* Thu Jun 26 2014 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.2.0-2
 - Updated to work with named module changes for RHEL7.
 - Fixed SELinux check for when selinux_current_mode is not found.
 - Updated for compatibility with Ruby 2 and Red Hat 7.
@@ -329,11 +335,11 @@ fi
 - Used the ACPI fact to ensure that the acpid service is not started
   if the ACPI service isn't supported on the system.
 
-* Tue Oct 24 2013 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.0.0-4
+* Thu Oct 24 2013 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.0.0-4
 - Added a function validate_array_member to validate whether or not a
   passed string or array is completely contained in another array.
 
-* Wed Oct 11 2013 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.0.0-3
+* Fri Oct 11 2013 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.0.0-3
 - Added a new validation function validate_umask that check to see if
   a umask is properly formatted.
 - Added PuppetX::SIMP::Common.human_sort
@@ -521,7 +527,7 @@ fi
 2.0.0-0
 - Refactored for SIMP-2.0.0-alpha release
 
-* Mon Dec 10 2010 Maintenance - 1.0-4
+* Fri Dec 10 2010 Maintenance - 1.0-4
 - Addition of an h2n function for translating hostnames to network addresses.
 - common::base_apps has been modified to allow base_apps overridable.
 - base_apps is no longer included in common by default, but it is included in
@@ -673,7 +679,7 @@ fi
 0.1-25
 - Fixed the yum-cron.erb template to work around Puppet Redmine Bug #2127.
 
-* Tue Oct 8 2009 Maintenance
+* Thu Oct 8 2009 Maintenance
 0.1-24
 - Now include the 'common::yum' class by default.
 - Added the ability to exclude packages during the nightly update.

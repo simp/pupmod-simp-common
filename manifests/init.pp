@@ -371,6 +371,14 @@ class common (
     members         => ['root']
   }
 
+  file { "$::puppet_vardir/simp":
+    ensure => 'directory',
+    mode   => '0750',
+    owner  => 'root',
+    group  => 'puppet'
+  }
+
+
   validate_umask($user_umask)
   validate_umask($daemon_umask)
   validate_bool($core_dumps)

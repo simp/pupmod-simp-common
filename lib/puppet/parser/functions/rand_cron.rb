@@ -7,7 +7,7 @@
 #
 # Based on: http://projects.puppetlabs.com/projects/puppet/wiki/Cron_Patterns/8/diff
 # Author: ohadlevy@gmail.com
-# License: Apache License, Version 2.0
+# License: None Posted
 #
 # example usage
 # int_to_cron('100')     - returns one value between 0..59 based on the value 100
