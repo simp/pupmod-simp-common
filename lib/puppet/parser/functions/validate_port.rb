@@ -16,7 +16,7 @@ module Puppet::Parser::Functions
     EOS
 
     unless arguments.length > 0 then
-      raise(Puppet::ParseError, "is_port(): Wrong number of arguments: #{arguments.length}; must be > 0")
+      raise(Puppet::ParseError, "validate_port(): Wrong number of arguments: #{arguments.length}; must be > 0")
     end
 
     arguments.each do |arg|
