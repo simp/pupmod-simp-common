@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_014b015a",
+        "filename": "lib/puppet/parser/functions/get_ports.rb",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-06-29T19:11:24Z",
+      "side": 1,
+      "message": "This is working by accident. You should make sure you include the proper lib directory when calling another function from a function just to make sure that things are clear.",
+      "revId": "0d4fd25a21110fcca39ffd9d7995294180009f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_2148055b",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-06-29T19:11:24Z",
+      "side": 1,
+      "message": "You should probably split this on \u0027://\u0027 and change the logic below accordingly. This has potential for error.\n\nsplit(\u0027://\u0027).last\n\n*should* work in all cases",
+      "revId": "0d4fd25a21110fcca39ffd9d7995294180009f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_4174299c",
+        "filename": "lib/puppet/parser/functions/strip_ports.rb",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-06-29T19:11:24Z",
+      "side": 1,
+      "message": "Should probably load the external functions explicitly here as well.",
+      "revId": "0d4fd25a21110fcca39ffd9d7995294180009f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_419b49c9",
+        "filename": "manifests/chkrootkit.pp",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-06-29T19:11:24Z",
+      "side": 1,
+      "message": "Change this to $_command to match the new syntax suggested by Puppet Labs for internal-only variables.",
+      "revId": "0d4fd25a21110fcca39ffd9d7995294180009f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_21b6453e",
+        "filename": "manifests/incron/add_system_table.pp",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-06-29T19:11:24Z",
+      "side": 1,
+      "message": "Change these to $_* variables to match the new syntax used by Puppet Labs for internal variables.",
+      "revId": "0d4fd25a21110fcca39ffd9d7995294180009f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
