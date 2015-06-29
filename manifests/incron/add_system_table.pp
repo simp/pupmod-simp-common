@@ -25,13 +25,14 @@ define common::incron::add_system_table (
     fail ('You must specify either $path and $command or $custom_content.')
   }
 
-  $l_mask = join($mask,',')
-
-  file { "/etc/incron.d/${name}":
-    content => $custom_content ? {
+  $l_mask    = join($mask,',')
+  $l_content = $custom_content ? {
       ''      => "${path} ${l_mask} ${command}\n",
       default => "${custom_content}\n"
-    },
+  }
+
+  file { "/etc/incron.d/${name}":
+    content => $l_content,
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
