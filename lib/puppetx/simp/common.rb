@@ -33,6 +33,25 @@ module PuppetX
 
         hname_regex.match(obj)
       end
+
+      # Return a host/port pair
+      def self.split_port(host_string)
+        host_pair = nil
+        # IPv6 Easy
+        if host_string.include?(']')
+          host_pair = host_string.split(/]:?/)
+          host_pair[0] = host_pair[0] + ']'
+        # IPv6 Fallback
+        elsif host_string.count(':') > 1
+          # Normalize IPv6 addresses to have '[]' for clarity
+          host_pair = [%([#{host_string}]),nil]
+        # Everything Else
+        else
+          host_pair = host_string.split(':')
+        end
+
+        host_pair
+      end
     end
   end
 end

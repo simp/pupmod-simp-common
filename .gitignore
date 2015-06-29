@@ -1,0 +1,4 @@
+Gemfile.lock
+dist
+spec/fixtures/hieradata/hiera.yaml
+spec/fixtures/modules

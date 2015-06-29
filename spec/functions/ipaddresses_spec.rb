@@ -21,7 +21,7 @@ describe Puppet::Parser::Functions.function(:ipaddresses) do
     end
 
     it 'should return an array with no empty or nil values' do
-      (subject.call([]).delete_if{|x| x and x =~ /\S/}).should =~ []
+      expect { subject.call([]).delete_if{|x| x and x =~ /\S/}.to =~ [] }
     end
   end
 
@@ -34,7 +34,7 @@ describe Puppet::Parser::Functions.function(:ipaddresses) do
     end
 
     it 'should return an array with no empty or nil values' do
-      (subject.call([]).delete_if{|x| x and x =~ /\S/}).should =~ []
+      expect { subject.call([]).delete_if{|x| x and x =~ /\S/}.to =~ [] }
     end
   end
 
