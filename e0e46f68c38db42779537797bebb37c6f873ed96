@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_06f5ca82",
+        "filename": "spec/functions/parse_hosts_spec.rb",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-07-01T22:03:40Z",
+      "side": 1,
+      "message": "If you can, move to the new \"expect\" syntax: https://travis-ci.org/simp/pupmod-simp-common/jobs/69151151#L320",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 3
+      },
+      "revId": "e0e46f68c38db42779537797bebb37c6f873ed96",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
