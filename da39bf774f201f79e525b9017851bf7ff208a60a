@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_ae0a30d0",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-02T16:37:02Z",
+      "side": 1,
+      "message": "Don\u0027t need this if statement. You know that tmp_host is an Array because you set it above.",
+      "revId": "da39bf774f201f79e525b9017851bf7ff208a60a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_8e2c8c4c",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-02T16:37:02Z",
+      "side": 1,
+      "message": "I think this should be after the if statement.\n\nIPv6 addresses are the following:\n\n1:2:3:4:5:6\n[1:2:3:4:5:6]:1234\n\netc...",
+      "revId": "da39bf774f201f79e525b9017851bf7ff208a60a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_ce269468",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-02T16:37:02Z",
+      "side": 1,
+      "message": "Why not just validate first with whatever they push in?",
+      "revId": "da39bf774f201f79e525b9017851bf7ff208a60a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_aebf90cf",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-02T16:37:02Z",
+      "side": 1,
+      "message": "You can shorten this as:\n\nparsed_hosts[hostname] \u003d {\n  :ports \u003d\u003e [],\n  :protocol \u003d\u003e []\n}",
+      "revId": "da39bf774f201f79e525b9017851bf7ff208a60a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_eeb0b8f6",
+        "filename": "spec/functions/parse_hosts_spec.rb",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-02T16:37:02Z",
+      "side": 1,
+      "message": "This file should be under spec/unit/puppet/parser/functions\n\nFunctionally, this looks fine, but you probably want to check for some non-http stuff just so you can be sure that it\u0027s not hard coded somewhere.\n\nTry \u0027foo\u0027 and \u0027bar\u0027",
+      "revId": "da39bf774f201f79e525b9017851bf7ff208a60a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_2ecb8073",
+        "filename": "spec/functions/parse_hosts_spec.rb",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-02T16:37:02Z",
+      "side": 1,
+      "message": "Spacing....",
+      "revId": "da39bf774f201f79e525b9017851bf7ff208a60a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_4ec8c474",
+        "filename": "spec/functions/parse_hosts_spec.rb",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-02T16:37:02Z",
+      "side": 1,
+      "message": "Do you want bugs....because this is how you get bugs!",
+      "revId": "da39bf774f201f79e525b9017851bf7ff208a60a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
