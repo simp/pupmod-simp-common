@@ -66,6 +66,11 @@ class common::swappiness (
     sysctl::value { 'vm.swappiness':
       value => inline_template('<%= @absolute_swappiness.to_i %>')
     }
+
+    cron { 'dynamic_swappiness':
+     ensure => absent
+    }
+
   }
 
   validate_integer($cron_step)

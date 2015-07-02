@@ -11,7 +11,7 @@ describe 'common::swappiness' do
   context 'absolute_swappiness' do
     let(:params){{ :absolute_swappiness => '10' }}
     it { should_not create_file('/usr/local/sbin/dynamic_swappiness.rb') }
-    it { should_not create_cron('dynamic_swappiness') }
+    it { should create_cron('dynamic_swappiness').with(:ensure => 'absent') }
     it { should create_sysctl__value('vm.swappiness').with_value('10') }
   end
 end
