@@ -1,7 +1,7 @@
 Summary: Common Puppet Module
 Name: pupmod-common
 Version: 4.2.0
-Release: 19
+Release: 20
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
@@ -80,6 +80,9 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Thu Jul 02 2015 Nick Markowski <nmarkowski@kewycorp.com> - 4.2.0-20
+- Removed dynamic_swappiness cron job if a static value is set for swappiness.
+
 * Fri May 01 2015 Kendall Moore <kmoore@keywcorp.com> - 4.2.0-19
 - Ensure <puppet_vardir>/simp directory gets created.
 
