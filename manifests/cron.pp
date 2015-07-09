@@ -57,19 +57,6 @@ class common::cron (
   }
 
   if $use_rsync {
-    rsync { 'anacrontab':
-      source  => "${rsync_root}/anacrontab",
-      target  => '/etc/anacrontab',
-      server  => $rsync_server,
-      timeout => $rsync_timeout
-    }
-
-    rsync { 'crontab':
-      source  => "${rsync_root}/crontab",
-      target  => '/etc/crontab',
-      server  => $rsync_server,
-      timeout => $rsync_timeout
-    }
 
     rsync { 'cron':
       source  => "${rsync_root}/cron.*",
