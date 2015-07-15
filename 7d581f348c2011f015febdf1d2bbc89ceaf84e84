@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_561496f4",
+        "filename": "build/pupmod-common.spec",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-07-15T17:13:13Z",
+      "side": 1,
+      "message": "I need to bump the version number",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "7d581f348c2011f015febdf1d2bbc89ceaf84e84",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_d65186d9",
+        "filename": "lib/puppet/parser/functions/parse_hosts.rb",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-07-15T17:13:13Z",
+      "side": 1,
+      "message": "oh noes",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "7d581f348c2011f015febdf1d2bbc89ceaf84e84",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
