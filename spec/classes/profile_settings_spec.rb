@@ -21,7 +21,7 @@ describe 'common::profile_settings' do
       /for user in bob alice eve; do/
     )}
     it { should create_file('/etc/profile.d/simp.csh').with_content(
-      /foreach user \(bob alice eve\)/ 
+      /foreach user \(bob alice eve\)/
     )}
   end
 

@@ -25,7 +25,7 @@ module Puppet::Parser::Functions
 
     if modifier then
       if modifier == 'i' then
-        to_compare.map!{|x| 
+        to_compare.map!{|x|
           if x.is_a?(String) then
             x = x.downcase
           else

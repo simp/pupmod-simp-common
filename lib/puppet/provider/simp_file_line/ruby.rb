@@ -34,7 +34,7 @@ Puppet::Type.type(:simp_file_line).provide(:ruby) do
 
     file_resource = resource.catalog.resource("File[#{resource[:path]}]")
 
-    if file_resource and file_resource[:replace] and 
+    if file_resource and file_resource[:replace] and
        ( file_resource[:source] or file_resource[:content] )
     then
       if resource[:deconflict] == :true then
