@@ -37,97 +37,81 @@ describe Puppet::Parser::Functions.function(:passgen) do
 
   it 'should return a password that is 32 alphanumeric characters long by default' do
     result = subject.call(['spectest'])
-    result.length.should eql(32)
-    result.should match(/^(#{default_chars.join('|')})+$/)
+    expect(result.length).to eql(32)
+    expect(result).to match(/^(#{default_chars.join('|')})+$/)
   end
 
   it 'should work with a String length' do
     result = subject.call([ 'spectest', {'length' => '32'} ])
-    result.length.should eql(32)
-    result.should match(/^(#{default_chars.join('|')})+$/)
+    expect(result.length).to eql(32)
+    expect(result).to match(/^(#{default_chars.join('|')})+$/)
   end
 
   it 'should return a password that is 8 alphanumeric characters long if length is 8' do
     result = subject.call([ 'spectest', {'length' => 8} ])
-    result.length.should eql(8)
-    result.should match(/^(#{default_chars.join('|')})+$/)
+    expect(result.length).to eql(8)
+    expect(result).to match(/^(#{default_chars.join('|')})+$/)
   end
 
   it 'should return a password that contains "safe" special characters if complexity is 1' do
     result = subject.call([ 'spectest', {'complexity' => 1} ])
-    result.length.should eql(32)
-    result.should match(/(#{default_chars.join('|')})/)
-    result.should match(/(#{(safe_special_chars).join('|')})/)
-    result.should_not match(/(#{(unsafe_special_chars).join('|')})/)
-  end
-
-  it 'should return a password that contains "safe" special characters if complexity is 1' do
-    result = subject.call([ 'spectest', {'complexity' => 1} ])
-    result.length.should eql(32)
-    result.should match(/(#{default_chars.join('|')})/)
-    result.should match(/(#{(safe_special_chars).join('|')})/)
-    result.should_not match(/(#{(unsafe_special_chars).join('|')})/)
-  end
-
-  it 'should return a password that contains "safe" special characters if complexity is 1' do
-    result = subject.call([ 'spectest', {'complexity' => 1} ])
-    result.length.should eql(32)
-    result.should match(/(#{default_chars.join('|')})/)
-    result.should match(/(#{(safe_special_chars).join('|')})/)
-    result.should_not match(/(#{(unsafe_special_chars).join('|')})/)
+    expect(result.length).to eql(32)
+    expect(result).to match(/(#{default_chars.join('|')})/)
+    expect(result).to match(/(#{(safe_special_chars).join('|')})/)
+    expect(result).not_to match(/(#{(unsafe_special_chars).join('|')})/)
   end
 
   it 'should work with a String complexity' do
     result = subject.call([ 'spectest', {'complexity' => '1'} ])
-    result.length.should eql(32)
-    result.should match(/(#{default_chars.join('|')})/)
-    result.should match(/(#{(safe_special_chars).join('|')})/)
-    result.should_not match(/(#{(unsafe_special_chars).join('|')})/)
+    expect(result.length).to eql(32)
+    expect(result).to match(/(#{default_chars.join('|')})/)
+    expect(result).to match(/(#{(safe_special_chars).join('|')})/)
+    expect(result).not_to match(/(#{(unsafe_special_chars).join('|')})/)
   end
 
   it 'should return a password that contains all special characters if complexity is 2' do
     result = subject.call([ 'spectest', {'complexity' => 2} ])
-    result.length.should eql(32)
-    result.should match(/(#{default_chars.join('|')})/)
-    result.should match(/(#{(unsafe_special_chars).join('|')})/)
+    expect(result.length).to eql(32)
+    expect(result).to match(/(#{default_chars.join('|')})/)
+    expect(result).to match(/(#{(unsafe_special_chars).join('|')})/)
   end
 
   it 'should return the next to last created password if "last" is true' do
     first_result = subject.call([ 'spectest', {'length' => 32} ])
     second_result = subject.call([ 'spectest', {'length' => 33} ])
     third_result = subject.call([ 'spectest', {'length' => 34} ])
-    subject.call([ 'spectest', 'last' ]).should eql(second_result)
+    expect(subject.call([ 'spectest', 'last' ])).to eql(second_result)
   end
 
   it 'should return the current password if "last" is true but there is no previous password' do
     result = subject.call([ 'spectest', {'length' => 32} ])
-    subject.call([ 'spectest', 'last' ]).should eql(result)
+    expect(subject.call([ 'spectest', 'last' ])).to eql(result)
   end
 
   it 'should return an md5 hash of the password if passed "md5"' do
     result = subject.call([ 'spectest', {'hash' => 'md5'} ])
-    result.should match(/^\$1\$/)
+    expect(result).to match(/^\$1\$/)
   end
 
   it 'should return an sha256 hash of the password if passed "sha256"' do
     result = subject.call([ 'spectest', {'hash' => 'sha256'} ])
-    result.should match(/^\$5\$/)
+    expect(result).to match(/^\$5\$/)
   end
 
   it 'should return an sha512 hash of the password if passed "sha512"' do
     result = subject.call([ 'spectest', {'hash' => 'sha512'} ])
-    result.should match(/^\$6\$/)
+    expect(result).to match(/^\$6\$/)
   end
 
   ## Legacy Options
   it 'should return the next to last created password if the second argument is "last"' do
     first_result = subject.call([ 'spectest' ])
     second_result = subject.call([ 'spectest', 33 ])
-    subject.call([ 'spectest', 'last' ]).should eql(first_result)
+    expect(subject.call([ 'spectest', 'last' ])).to eql(first_result)
   end
 
   it 'should return a password of length 8 if the second argument is "8"' do
     result = subject.call([ 'spectest' ])
-    subject.call([ 'spectest', 8 ]).length.should eql(8)
+    expect(subject.call([ 'spectest', 8 ]).length).to eql(8)
   end
 end

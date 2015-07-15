@@ -1,7 +1,7 @@
 Summary: Common Puppet Module
 Name: pupmod-common
 Version: 4.2.0
-Release: 19
+Release: 20
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
@@ -80,6 +80,12 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Mon Jun 15 2015 Nick Markowski <nmarkowski@keywcorp.com> - 4.2.0-20
+- Added a function to parse host strings/urls.  Returns a hash of
+  hostnames with an array of ports and an array of protocols.
+  Modified strip_ports to use parse_hosts and added get_ports to
+  return stripped ports.
+
 * Fri May 01 2015 Kendall Moore <kmoore@keywcorp.com> - 4.2.0-19
 - Ensure <puppet_vardir>/simp directory gets created.
 

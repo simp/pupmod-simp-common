@@ -28,19 +28,19 @@ module Puppet::Parser::Functions
 
     ENDHEREDOC
 
-    if args.length < 1 or args.length > 2 then
+    if ((args.length < 1) || (args.length > 2))
       raise Puppet::ParseError,("validate_net_list(): Must pass [net_list], (optional exclusion regex).")
     end
 
     net_list = args.shift
-    unless net_list.is_a?(String) or net_list.is_a?(Array) then
+    unless (net_list.is_a?(String) || net_list.is_a?(Array))
       raise Puppet::ParseError,("validate_net_list(): net_list must be either a String or Array")
     end
     net_list = Array(net_list.dup)
 
     str_match = args.shift
 
-    if str_match then
+    if str_match
       str_match = Regexp.new(Regexp.escape(str_match))
       net_list.delete_if{|x| str_match.match(x)}
     end
@@ -48,27 +48,25 @@ module Puppet::Parser::Functions
     require File.expand_path(File.dirname(__FILE__) + '/../../../puppetx/simp/common.rb')
     require 'ipaddr'
 
-    net_list.each do |n|
+    # Needed to use other functions inside of this one
+    Puppet::Parser::Functions.autoloader.loadall
+
+    net_list.each do |net|
       begin
-        # Just skip it if it's a hostname.
-        next if PuppetX::SIMP::Common.hostname?(n)
-
         # Do we have a port?
-        if n =~ /^([0-9.]+|(?:\[[0-9a-fA-F:]+\]))(:[0-9]+)$/
-          n = $1
-          p = $2
+        host,port = PuppetX::SIMP::Common.split_port(net)
+        function_validate_port(Array(port)) if (port && !port.empty?)
 
-          # Is it a valid port?
-          p.to_i.between?(0,65536) or raise ArgumentError
-        end
+        # Just skip it if it's a hostname.
+        next if PuppetX::SIMP::Common.hostname?(host)
 
-        ip = IPAddr.new(n)
-        if not ip.ipv4? and not ip.ipv6? then
+        ip = IPAddr.new(host)
+        unless (ip.ipv4? || ip.ipv6?)
          # This is just here to re-use the rescue below.
          raise ArgumentError
         end
       rescue ArgumentError
-        raise Puppet::ParseError,("validate_net_list(): '#{n}' is not a valid network.")
+        raise Puppet::ParseError,("validate_net_list(): '#{net}' is not a valid network.")
       end
     end
   end
