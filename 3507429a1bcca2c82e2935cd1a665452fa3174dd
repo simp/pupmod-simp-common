@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_b9779339",
+        "filename": "build/pupmod-common.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-07-15T18:29:34Z",
+      "side": 1,
+      "message": "Smarsh it!",
+      "revId": "3507429a1bcca2c82e2935cd1a665452fa3174dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
