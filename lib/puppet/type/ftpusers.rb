@@ -39,7 +39,7 @@ module Puppet
     newproperty(:to_write) do
       desc "Ignored, auto-populated from /etc/passwd"
       defaultto 'default'
-      
+
       def insync?(is)
         require 'etc'
 
@@ -90,4 +90,4 @@ module Puppet
       end
     end
   end
-end 
+end
