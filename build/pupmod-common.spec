@@ -80,6 +80,10 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Thu Jul 09 2015 Nick Markowski <nmarkowski@keywcorp.com> - 4.2.0-20
+- Do not attempt to rsync crontab or anacrontab by default; we no
+  longer supply them in rsync global_etc.
+
 * Mon Jun 15 2015 Nick Markowski <nmarkowski@keywcorp.com> - 4.2.0-20
 - Added a function to parse host strings/urls.  Returns a hash of
   hostnames with an array of ports and an array of protocols.
