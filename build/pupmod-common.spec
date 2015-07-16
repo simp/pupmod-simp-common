@@ -87,6 +87,7 @@ fi
   hostnames with an array of ports and an array of protocols.
   Modified strip_ports to use parse_hosts and added get_ports to
   return stripped ports.
+- Removed dynamic_swappiness cron job if a static value is set for swappiness.
 
 * Fri May 01 2015 Kendall Moore <kmoore@keywcorp.com> - 4.2.0-19
 - Ensure <puppet_vardir>/simp directory gets created.
