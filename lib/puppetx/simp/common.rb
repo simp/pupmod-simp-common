@@ -39,7 +39,7 @@ module PuppetX
         host_pair = nil
         # IPv6 Easy
         if host_string.include?(']')
-          host_pair = host_string.split(/]:?/)
+          host_pair = host_string.split(/\]:?/)
           host_pair[0] = host_pair[0] + ']'
         # IPv6 Fallback
         elsif host_string.count(':') > 1
