@@ -1,7 +1,7 @@
 Summary: Common Puppet Module
 Name: pupmod-common
 Version: 4.2.0
-Release: 20
+Release: 21
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
@@ -80,6 +80,10 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Tue Sep 22 2015 Kendall Moore <kmoore@keywcorp.com> - 4.2.0-21
+- Only create a reboot notification for FIPS is fips is actually being
+  enabled/disabled.
+
 * Thu Jul 09 2015 Nick Markowski <nmarkowski@keywcorp.com> - 4.2.0-20
 - Do not attempt to rsync crontab or anacrontab by default; we no
   longer supply them in rsync global_etc.

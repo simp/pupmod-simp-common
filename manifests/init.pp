@@ -174,6 +174,8 @@ class common (
       kernel_parameter { 'boot':
         value => "UUID=${::boot_dir_uuid}"
       }
+
+      reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
     }
   }
   else {
@@ -181,9 +183,10 @@ class common (
       ensure   => 'absent',
       bootmode => 'normal'
     }
+
+    reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
   }
 
-  reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
 
   if !empty($ftpusers_min) {
     file { '/etc/ftpusers':
