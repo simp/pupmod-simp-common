@@ -104,7 +104,12 @@
 # [*use_fips*]
 # Type: Boolean
 # Default: false
-#   If enabled, the system will be FIPS 140-2 compliant.
+#   If enabled, the system will be FIPS 140-2 enabled.
+#
+# [*use_fips_aesni*]
+# Type: Boolean
+# Default: true
+#   If enabled and $use_fips is true, then install dracut-fips-aesni
 #
 # [*runlevel*]
 # Type: 1-5, rescue, multi-user, or graphical
@@ -159,6 +164,9 @@ class common (
   $manage_tmp_perms = true,
   $manage_root_perms = true,
   $use_fips = hiera('use_fips', false),
+  # I'm not entirely sure what happens if you mix CPUs and one doesn't have AES
+  # enabled...
+  $use_fips_aesni = $::cpuinfo and member($::cpuinfo['processor0']['flags'],'aes'),
   $runlevel = '3',
   $proc_hidepid = '2'
 ){
@@ -175,6 +183,21 @@ class common (
         value => "UUID=${::boot_dir_uuid}"
       }
 
+      package { 'dracut-fips':
+        ensure => 'latest',
+        notify => Exec['dracut_rebuild']
+      }
+      package { 'fipscheck':
+        ensure => 'latest'
+      }
+
+      if $use_fips_aesni {
+        package { 'dracut-fips-aesni':
+          ensure => 'latest',
+          notify => Exec['dracut_rebuild']
+        }
+      }
+
       reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
     }
   }
@@ -184,9 +207,21 @@ class common (
       bootmode => 'normal'
     }
 
+    package { 'dracut-fips' :
+      ensure => 'absent'
+    }
+    package { 'dracut-fips-aesni' :
+      ensure  => 'absent',
+      require => Package['dracut-fips']
+    }
+
     reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
   }
 
+  exec { 'dracut_rebuild':
+    command     => '/sbin/dracut -f',
+    refreshonly => true
+  }
 
   if !empty($ftpusers_min) {
     file { '/etc/ftpusers':
