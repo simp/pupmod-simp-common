@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ae5cdf2_d99f095e",
+        "filename": "lib/facter/cpuinfo.rb",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-09-25T03:24:48Z",
+      "side": 1,
+      "message": "NO IT BURRRRRRNS",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "42d463de9bdb8cf736f05e640bd8483bcd6288b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
