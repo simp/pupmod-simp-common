@@ -32,6 +32,8 @@ describe 'common' do
     it {
       should create_kernel_parameter('fips').with_value('1')
       should create_kernel_parameter('fips').with_bootmode('normal')
+      should create_package('dracut-fips').with_ensure('latest')
+      should create_package('fipscheck').with_ensure('latest')
     }
     it { should create_kernel_parameter('boot').with_value("UUID=#{facts[:boot_dir_uuid]}") }
     it { should create_reboot_notify('fips') }
