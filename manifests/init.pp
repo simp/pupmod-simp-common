@@ -173,33 +173,32 @@ class common (
   runlevel { $runlevel: }
 
   if $use_fips {
-    if (str2bool($::fips_enabled) != $use_fips) {
-      kernel_parameter { 'fips':
-        value    => '1',
-        bootmode => 'normal'
-      }
+    kernel_parameter { 'fips':
+      value    => '1',
+      bootmode => 'normal'
+    }
 
-      kernel_parameter { 'boot':
-        value => "UUID=${::boot_dir_uuid}"
-      }
+    kernel_parameter { 'boot':
+      value => "UUID=${::boot_dir_uuid}",
+      bootmode => 'normal'
+    }
 
-      package { 'dracut-fips':
+    package { 'dracut-fips':
+      ensure => 'latest',
+      notify => Exec['dracut_rebuild']
+    }
+    package { 'fipscheck':
+      ensure => 'latest'
+    }
+
+    if $use_fips_aesni {
+      package { 'dracut-fips-aesni':
         ensure => 'latest',
         notify => Exec['dracut_rebuild']
       }
-      package { 'fipscheck':
-        ensure => 'latest'
-      }
-
-      if $use_fips_aesni {
-        package { 'dracut-fips-aesni':
-          ensure => 'latest',
-          notify => Exec['dracut_rebuild']
-        }
-      }
-
-      reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
     }
+
+    reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
   }
   else {
     kernel_parameter { 'fips':
