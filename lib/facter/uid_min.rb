@@ -11,7 +11,7 @@ Facter.add('uid_min') do
 
     if not uid_min or uid_min.empty? then
       if ['RedHat','CentOS'].include?(Facter.value(:operatingsystem)) and
-         Facter.value(:lsbmajdistrelease) < '7' then
+         Facter.value(:operatingsystemmajrelease) < '7' then
           uid_min = '500'
       else
         uid_min = '1000'
