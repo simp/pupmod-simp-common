@@ -1,7 +1,7 @@
 Summary: Common Puppet Module
 Name: pupmod-common
 Version: 4.2.0
-Release: 21
+Release: 22
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
@@ -80,6 +80,11 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Tue Oct 27 2015 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.2.0-22
+- Updates based on testing FIPS mode
+  - The system can now disable FIPS via Puppet properly
+  - The 'fips_enabled' fact now works properly on EL6
+
 * Tue Sep 22 2015 Kendall Moore <kmoore@keywcorp.com> - 4.2.0-21
 - Only create a reboot notification for FIPS is fips is actually being
   enabled/disabled.

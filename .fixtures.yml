@@ -1,21 +1,20 @@
 ---
 fixtures:
-  repositories:
-    auditd:                 'git://github.com/simp/pupmod-simp-auditd.git'
-    augeasproviders_core:   'git://github.com/simp/augeasproviders_core.git'
-    augeasproviders_grub:   'git://github.com/simp/augeasproviders_grub.git'
-    augeasproviders_sysctl: 'git://github.com/simp/augeasproviders_sysctl.git'
-    concat:                 'git://github.com/simp/pupmod-simp-concat.git'
-    functions:              'git://github.com/simp/pupmod-simp-functions.git'
-    gpasswd:                'git://github.com/simp/puppet-gpasswd.git'
-    iptables:               'git://github.com/simp/pupmod-simp-iptables.git'
-    named:                  'git://github.com/simp/pupmod-simp-named.git'
-    oddjob:                 'git://github.com/simp/pupmod-simp-oddjob.git'
-    pam:                    'git://github.com/simp/pupmod-simp-pam.git'
-    rsync:                  'git://github.com/simp/pupmod-simp-rsync.git'
-    stdlib:                 'git://github.com/simp/puppetlabs-stdlib.git'
-    sudo:                   'git://github.com/simp/pupmod-simp-sudo.git'
-    sysctl:                 'git://github.com/simp/pupmod-simp-sysctl.git'
-    upstart:                'git://github.com/simp/pupmod-simp-upstart.git'
   symlinks:
     common: "#{source_dir}"
+    auditd: "#{source_dir}/../auditd"
+    augeasproviders_core: "#{source_dir}/../augeasproviders_core"
+    augeasproviders_grub: "#{source_dir}/../augeasproviders_grub"
+    augeasproviders_sysctl: "#{source_dir}/../augeasproviders_sysctl"
+    concat: "#{source_dir}/../concat"
+    functions: "#{source_dir}/../functions"
+    gpasswd: "#{source_dir}/../gpasswd"
+    iptables: "#{source_dir}/../iptables"
+    named: "#{source_dir}/../named"
+    oddjob: "#{source_dir}/../oddjob"
+    pam: "#{source_dir}/../pam"
+    rsync: "#{source_dir}/../rsync"
+    stdlib: "#{source_dir}/../stdlib"
+    sudo: "#{source_dir}/../sudo"
+    sysctl: "#{source_dir}/../sysctl"
+    upstart: "#{source_dir}/../upstart"

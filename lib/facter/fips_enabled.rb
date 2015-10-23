@@ -1,9 +1,15 @@
-Facter.add("fips_enabled") do
+# Determine whether or not FIPS is enabled on this system
+# Returns: Boolean
+Facter.add('fips_enabled') do
+  confine :kernel => 'Linux'
+
   setcode do
-    if Facter::Util::Resolution.exec("sysctl crypto.fips_enabled | grep 1").empty?
-      false
-    else
+    status_file = '/proc/sys/crypto/fips_enabled'
+
+    if File.exist?(status_file) && File.open(status_file, &:readline)[0].chr == '1'
       true
+    else
+      false
     end
   end
 end
