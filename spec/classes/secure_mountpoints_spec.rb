@@ -3,16 +3,13 @@ require 'spec_helper'
 describe 'common::secure_mountpoints' do
   base_facts = {
     :operatingsystem => 'CentOS',
-    :lsbmajdistrelease => '6',
-    :lsbdistrelease => '6.5',
+    :operatingsystemmajrelease => '6',
+    :operatingsystemrelease => '6.5',
     :ipaddress => '10.10.10.10',
     :fqdn => 'foo.bar.baz',
     :hostname => 'foo',
     :interfaces => 'eth0',
     :ipaddress_eth0 => '10.10.10.10',
-    :trusted => {
-      :certname => 'foo.bar.baz'
-    },
     :selinux_current_mode => 'enforcing'
   }
 
