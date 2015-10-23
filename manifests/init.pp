@@ -174,13 +174,17 @@ class common (
 
   if $use_fips {
     kernel_parameter { 'fips':
-      value    => '1',
-      bootmode => 'normal'
+      value      => '1',
+      # This doesn't work due to a bug in the Grub Augeas Provider
+      # bootmode => 'normal'
+      notify     => Reboot_notify['fips']
     }
 
     kernel_parameter { 'boot':
-      value => "UUID=${::boot_dir_uuid}",
-      bootmode => 'normal'
+      value      => "UUID=${::boot_dir_uuid}",
+      # This doesn't work due to a bug in the Grub Augeas Provider
+      # bootmode => 'normal',
+      notify     => Reboot_notify['fips']
     }
 
     package { 'dracut-fips':
@@ -197,28 +201,25 @@ class common (
         notify => Exec['dracut_rebuild']
       }
     }
-
-    reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
   }
   else {
     kernel_parameter { 'fips':
-      ensure   => 'absent',
-      bootmode => 'normal'
+      value      => '0',
+      # This doesn't work due to a bug in the Grub Augeas Provider
+      # bootmode => 'normal',
+      notify     => Reboot_notify['fips']
     }
-
-    package { 'dracut-fips' :
-      ensure => 'absent'
-    }
-    package { 'dracut-fips-aesni' :
-      ensure  => 'absent',
-      require => Package['dracut-fips']
-    }
-
-    reboot_notify { 'fips': subscribe => Kernel_parameter['fips'] }
   }
+
+  reboot_notify { 'fips': }
+
+  # If the NSS and dracut packages don't stay reasonably in sync, your system
+  # may not reboot.
+  package { 'nss': ensure => 'latest' }
 
   exec { 'dracut_rebuild':
     command     => '/sbin/dracut -f',
+    subscribe   => Package['nss'],
     refreshonly => true
   }
 
