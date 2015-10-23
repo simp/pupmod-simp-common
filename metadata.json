@@ -1,0 +1,89 @@
+{
+  "name":    "simp-common",
+  "version": "4.2.0-22",
+  "author":  "simp",
+  "summary": "A collection of SIMP configuration settings that do not warrant their own modules.",
+  "license": "Apache-2.0",
+  "source":  "https://github.com/simp/pupmod-simp-common",
+  "project_page": "https://github.com/simp/pupmod-simp-common",
+  "issues_url":   "https://simp-project.atlassian.net",
+  "tags": [ "simp" ],
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "simp-iptables",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "augeasproviders_grub"
+    },
+    {
+      "name": "augeasproviders_sysctl"
+    },
+    {
+      "name": "onyxpoint-gpasswd"
+    },
+    {
+      "name": "simp-concat",
+      "version_requirement": ">= 2.0.0-0"
+    },
+    {
+      "name": "simp-functions",
+      "version_requirement": ">= 2.0.0-0"
+    },
+    {
+      "name": "simp-named",
+      "version_requirement": ">= 4.2.0-2"
+    },
+    {
+      "name": "simp-rsync",
+      "version_requirement": ">= 2.0.0-0"
+    },
+    {
+      "name": "simp-site",
+      "version_requirement": ">= 2.0.0-0"
+    },
+    {
+      "name": "simp-sssd",
+      "version_requirement": ">= 2.0.0-0"
+    },
+    {
+      "name": "simp-stunnel",
+      "version_requirement": ">= 4.1.0-2"
+    },
+    {
+      "name": "simp-sysctl",
+      "version_requirement": ">= 4.1.0-2"
+    },
+    {
+      "name": "simp-pam",
+      "version_requirement": ">= 4.1.0-12"
+    },
+    {
+      "name": "simp-sudo",
+      "version_requirement": ">= 4.1.0-2"
+    },
+    {
+      "name": "simp-upstart"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ]
+}

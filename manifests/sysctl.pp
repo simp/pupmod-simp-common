@@ -125,7 +125,7 @@ class common::sysctl (
         'net.ipv4.tcp_syncookies':                    value => $net__ipv4__tcp_syncookies;
       }
 
-      if ( $::operatingsystem in ['RedHat','CentOS'] ) and ( $::lsbmajdistrelease == '6' ) {
+      if ( $::operatingsystem in ['RedHat','CentOS'] ) and ( $::operatingsystemmajrelease == '6' ) {
             sysctl::value { 'kernel.exec-shield': value => $kernel__exec_shield; }
       }
 
