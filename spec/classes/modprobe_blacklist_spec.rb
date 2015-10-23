@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'common::modprobe_blacklist' do
   let(:facts){{
     :operatingsystem => 'CentOS',
-    :lsbdistrelease => '6.5',
-    :lsbmajdistrelease => '6'
+    :operatingsystemrelease => '6.5',
+    :operatingsystemmajrelease => '6'
   }}
 
   it { should compile.with_all_deps }

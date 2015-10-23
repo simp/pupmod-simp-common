@@ -4,8 +4,8 @@ describe 'common::localusers' do
   let(:facts){{
     :fqdn => 'foo.bar.baz',
     :operatingsystem => 'CentOS',
-    :lsbdistrelease => '6.5',
-    :lsbmajdistrelease => '6'
+    :operatingsystemrelease => '6.5',
+    :operatingsystemmajrelease => '6'
   }}
 
   context 'real_file' do
