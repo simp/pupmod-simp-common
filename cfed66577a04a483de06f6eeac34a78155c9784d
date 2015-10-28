@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_30203549",
+        "filename": ".fixtures.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-10-28T18:32:04Z",
+      "side": 1,
+      "message": "looks like you set these locally to test, but accidentally pushed it",
+      "revId": "cfed66577a04a483de06f6eeac34a78155c9784d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
