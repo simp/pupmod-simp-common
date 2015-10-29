@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_25a714bf",
+        "filename": "spec/acceptance/fips_spec.rb",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-10-29T20:35:01Z",
+      "side": 1,
+      "message": "detritus!",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "30f57d2abe6f1e60d730f723ec0b7ceb6897e413",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
