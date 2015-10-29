@@ -16,6 +16,29 @@
       "revId": "cfed66577a04a483de06f6eeac34a78155c9784d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_c1300d59",
+        "filename": ".fixtures.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-10-29T15:52:59Z",
+      "side": 1,
+      "message": "This breaks `bundle exec rake spec` and `bundle exec rake test`",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "cfed66577a04a483de06f6eeac34a78155c9784d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
