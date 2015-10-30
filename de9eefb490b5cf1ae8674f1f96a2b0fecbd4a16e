@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ab29df4_c8902d98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-10-30T06:48:28Z",
+      "side": 1,
+      "message": "Should this be 564?",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "de9eefb490b5cf1ae8674f1f96a2b0fecbd4a16e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_e5f99c4e",
         "filename": "spec/classes/secure_mountpoints_spec.rb",
         "patchSetId": 4
