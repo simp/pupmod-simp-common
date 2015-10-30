@@ -22,7 +22,7 @@
 #
 #   [*tmp_opts*]
 #     Type: Array of mount options
-#     Default: ['noexec','nodev','nosuid','defcontext=system_u:object_r:tmp_t:s0']
+#     Default: ['noexec','nodev','nosuid']
 #
 #     If secure_tmp_mount is true, add these options to the /tmp
 #     directory. If set to an empty array, it will simply preserve the
@@ -33,13 +33,13 @@
 #
 #   [*var_tmp_opts*]
 #     Type: Array of mount options
-#     Default: ['noexec','nodev','nosuid','defcontext=system_u:object_r:tmp_t:s0']
+#     Default: ['noexec','nodev','nosuid']
 #
 #     Works the same way as *tmp_opts* above.
 #
 #   [*dev_shm_opts*]
 #     Type: Array of mount options
-#     Default: ['noexec','nodev','nosuid','defcontext=system_u:object_r:tmpfs_t:s0']
+#     Default: ['noexec','nodev','nosuid']
 #
 #     Works the same way as *tmp_opts* above.
 #
@@ -48,9 +48,9 @@
 #
 class common::secure_mountpoints (
   $secure_tmp_mounts = true,
-  $tmp_opts = ['noexec','nodev','nosuid','defcontext=system_u:object_r:tmp_t:s0'],
-  $var_tmp_opts = ['noexec','nodev','nosuid','defcontext=system_u:object_r:tmp_t:s0'],
-  $dev_shm_opts = ['noexec','nodev','nosuid','defcontext=system_u:object_r:tmpfs_t:s0']
+  $tmp_opts = ['noexec','nodev','nosuid'],
+  $var_tmp_opts = ['noexec','nodev','nosuid'],
+  $dev_shm_opts = ['noexec','nodev','nosuid']
 ) {
   # Set some basic mounts (may be RHEL specific...)
   mount { '/dev/pts':
@@ -76,11 +76,8 @@ class common::secure_mountpoints (
 
   # If we decide to secure the tmp mounts....
   if $secure_tmp_mounts {
-    # Need this because it's where the directory permissions are held.
-    include 'common'
-
     # If /tmp is mounted
-    if !empty($::tmp_mount_tmp) {
+    if $::tmp_mount_tmp and !empty($::tmp_mount_tmp) {
       $tmp_mount_tmp_opts = split($::tmp_mount_tmp,',')
 
       # If /tmp is not a bind mount and doesn't contain the required options
@@ -105,6 +102,15 @@ class common::secure_mountpoints (
           device   => $::tmp_mount_path_tmp,
           remounts => true
         }
+
+        if !empty(difference($tmp_opts,$tmp_mount_tmp_opts)) {
+          $_remount_tmp_opts = join($tmp_opts,',')
+
+          exec { 'remount /tmp':
+            command => "/bin/mount -o remount,${_remount_tmp_opts} /tmp",
+            require => Mount['/tmp']
+          }
+        }
       }
     }
     # Otherwise, bind mount it to itself with the correct options.
@@ -117,16 +123,22 @@ class common::secure_mountpoints (
         fstype   => 'none',
         options  => join_mount_opts(['bind'],$tmp_opts),
         device   => '/tmp',
-        remounts => true
+        remounts => true,
+        notify   => Exec['remount /tmp']
+      }
+
+      exec { 'remount /tmp':
+        command     => "/bin/mount -o remount,${tmp_opts} /tmp",
+        refreshonly => true
       }
     }
 
-    if $::common::manage_tmp_perms and $::tmp_mount_tmp {
+    if defined('::common::manage_tmp_perms') and $::tmp_mount_tmp {
       File['/tmp'] -> Mount['/tmp']
     }
 
     # If /var/tmp is mounted
-    if !empty($::tmp_mount_var_tmp) {
+    if $::tmp_mount_var_tmp and !empty($::tmp_mount_var_tmp) {
       $tmp_mount_var_tmp_opts = split($::tmp_mount_var_tmp,',')
 
       # If /var/tmp is not a bind mount then mount it properly.
@@ -150,6 +162,15 @@ class common::secure_mountpoints (
           device   => $::tmp_mount_path_var_tmp,
           remounts => true
         }
+
+        if !empty(difference($var_tmp_opts,$tmp_mount_var_tmp_opts)) {
+          $_remount_var_tmp_opts = join($var_tmp_opts,',')
+  
+          exec { 'remount /var/tmp':
+            command => "/bin/mount -o remount,${_remount_var_tmp_opts} /var/tmp",
+            require => Mount['/var/tmp']
+          }
+        }
       }
     }
     # Otherwise, bind mount it to /tmp.
@@ -160,16 +181,22 @@ class common::secure_mountpoints (
         fstype   => 'none',
         options  => join_mount_opts(['bind'],$var_tmp_opts),
         target   => '/etc/fstab',
-        remounts => true
+        remounts => true,
+        notify   => Exec['remount /var/tmp']
+      }
+
+      exec { 'remount /var/tmp':
+        command     => "/bin/mount -o remount,${var_tmp_opts} /var/tmp",
+        refreshonly => true
       }
     }
 
-    if $::common::manage_tmp_perms and $::tmp_mount_var_tmp {
+    if defined('::common::manage_tmp_perms') and $::tmp_mount_var_tmp {
       File['/var/tmp'] -> Mount['/var/tmp']
     }
 
     # If /dev/shm is mounted
-    if !empty($::tmp_mount_dev_shm) {
+    if $::tmp_mount_dev_shm and !empty($::tmp_mount_dev_shm) {
       $tmp_mount_dev_shm_opts = split($::tmp_mount_dev_shm,',')
 
       # If /dev/shm doesn't contain the required options then mount it
