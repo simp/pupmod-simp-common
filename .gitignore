@@ -1,4 +1,12 @@
-Gemfile.lock
-dist
-spec/fixtures/hieradata/hiera.yaml
-spec/fixtures/modules
+.*.sw?
+/Gemfile.lock
+/.rspec_system
+/.vagrant
+/.bundle
+/dist
+/junit
+/log
+/pkg
+/vendor
+/spec/fixtures/hieradata/hiera.yaml
+/spec/fixtures/modules

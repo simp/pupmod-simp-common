@@ -174,17 +174,15 @@ class common (
 
   if $use_fips {
     kernel_parameter { 'fips':
-      value      => '1',
-      # This doesn't work due to a bug in the Grub Augeas Provider
-      # bootmode => 'normal'
-      notify     => Reboot_notify['fips']
+      value  => '1',
+      notify => Reboot_notify['fips']
+      # bootmode => 'normal', # This doesn't work due to a bug in the Grub Augeas Provider
     }
 
     kernel_parameter { 'boot':
-      value      => "UUID=${::boot_dir_uuid}",
-      # This doesn't work due to a bug in the Grub Augeas Provider
-      # bootmode => 'normal',
-      notify     => Reboot_notify['fips']
+      value  => "UUID=${::boot_dir_uuid}",
+      notify => Reboot_notify['fips']
+      # bootmode => 'normal', # This doesn't work due to a bug in the Grub Augeas Provider
     }
 
     package { 'dracut-fips':
@@ -204,10 +202,9 @@ class common (
   }
   else {
     kernel_parameter { 'fips':
-      value      => '0',
-      # This doesn't work due to a bug in the Grub Augeas Provider
-      # bootmode => 'normal',
-      notify     => Reboot_notify['fips']
+      value  => '0',
+      notify => Reboot_notify['fips']
+      # bootmode => 'normal', # This doesn't work due to a bug in the Grub Augeas Provider
     }
   }
 

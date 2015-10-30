@@ -81,6 +81,12 @@ fi
 
 %changelog
 * Tue Oct 27 2015 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.2.0-22
+- Fixed the tmp mountpoint code
+  - Stopped managing the default SELinux context
+  - Fixed the default facts to properly return the mount options on the temp partitions
+  - Users with bind mounted /tmp directories will need to unmount them and
+    remove them from /etc/fstab prior to being able to fully work around the
+    bug.
 - Updates based on testing FIPS mode
   - The system can now disable FIPS via Puppet properly
   - The 'fips_enabled' fact now works properly on EL6
