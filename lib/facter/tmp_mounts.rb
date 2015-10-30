@@ -23,12 +23,14 @@ target_dirs = %w(
 
 mount_list = Hash.new
 
-Facter::Util::Resolution.exec('/bin/cat /etc/mtab 2> /dev/null').each_line do |line|
+# Sometimes Ruby has issues with /proc
+File.exist?('/proc/mounts') && Facter::Util::Resolution.exec('cat /proc/mounts 2> /dev/null').each_line do |line|
   line.strip!
 
   next if line.empty? or line.match(/^none/)
 
   mount = line.split(/\s+/)
+  next unless target_dirs.include?(mount[1])
 
   # If there are multiple mounts at the same mountpoint, this picks up the very
   # last one, which is what you want.
@@ -41,33 +43,45 @@ Facter::Util::Resolution.exec('/bin/cat /etc/mtab 2> /dev/null').each_line do |l
   }
 end
 
+# Check for bind mounts using findmnt since some systems (EL7) do not post the
+# 'bind' keyword into the mount options any longer.
+mount_list.keys.each do |mnt|
+  mnt_source = Facter::Util::Resolution.exec("findmnt #{mnt}").split("\n").last.split(/\s+/)[1]
+
+  # We're a bind mount if this happens
+  if mnt_source.include?('[')
+    bind_source = mnt_source[/\[(.*)\]/,1] # Match contents in brackets, extract first match
+
+    mount_list[mnt][:path] = bind_source
+    mount_list[mnt][:fstype] = 'none'
+
+    unless mount_list[mnt][:opts].split(',').include?('bind')
+      mount_list[mnt][:opts] = mount_list[mnt][:opts] + ',bind'
+    end
+  end
+end
+
 target_dirs.each do |dir|
+  if mount_list[dir]
+    Facter.add("tmp_mount#{dir.gsub('/','_')}") do
+      confine :kernel => :linux
+      setcode do
+        mount_list[dir][:opts]
+      end
+    end
 
-  Facter.add("tmp_mount#{dir.gsub('/','_')}") do
-    confine :kernel => :linux
-    setcode do
-      retval = nil
-      mount_list[dir] and retval = mount_list[dir][:opts]
-      retval
+    Facter.add("tmp_mount_path#{dir.gsub('/','_')}") do
+      confine :kernel => :linux
+      setcode do
+        mount_list[dir][:path]
+      end
+    end
+
+    Facter.add("tmp_mount_fstype#{dir.gsub('/','_')}") do
+      confine :kernel => :linux
+      setcode do
+        retval = mount_list[dir][:fstype]
+      end
     end
   end
-
-  Facter.add("tmp_mount_path#{dir.gsub('/','_')}") do
-    confine :kernel => :linux
-    setcode do
-      retval = nil
-      mount_list[dir] and retval = mount_list[dir][:path]
-      retval
-    end
-  end
-
-  Facter.add("tmp_mount_fstype#{dir.gsub('/','_')}") do
-    confine :kernel => :linux
-    setcode do
-      retval = nil
-      mount_list[dir] and retval = mount_list[dir][:fstype]
-      retval
-    end
-  end
-
 end
