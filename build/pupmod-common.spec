@@ -1,7 +1,7 @@
 Summary: Common Puppet Module
 Name: pupmod-common
 Version: 4.2.0
-Release: 22
+Release: 23
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
@@ -10,7 +10,7 @@ Requires: pupmod-augeasproviders_grub
 Requires: pupmod-augeasproviders_sysctl
 Requires: pupmod-onyxpoint-gpasswd
 Requires: puppetlabs-stdlib
-Requires: pupmod-concat >= 2.0.0-0
+Requires: pupmod-simpcat >= 2.0.0-0
 Requires: pupmod-functions >= 2.0.0-0
 Requires: pupmod-named >= 4.2.0-2
 Requires: pupmod-rsync >= 2.0.0-0
@@ -21,6 +21,7 @@ Requires: pupmod-sysctl >= 4.1.0-2
 Requires: puppet >= 3.4
 Buildarch: noarch
 Requires: simp-bootstrap >= 4.2.0
+Requires: simp-simplib >= 1.0.0
 Obsoletes: pupmod-timezone
 Obsoletes: pupmod-sec
 Obsoletes: pupmod-elinks
@@ -80,6 +81,10 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Sat Nov 07 2015 Chris Tessmer <chris.tessmer@onyxpoint.com> - 4.2.0-23
+- Moved functions out of common and into simplib
+- Changed concat dependency to simpcat
+
 * Tue Oct 27 2015 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.2.0-22
 - Fixed the tmp mountpoint code
   - Stopped managing the default SELinux context

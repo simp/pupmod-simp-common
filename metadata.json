@@ -27,36 +27,36 @@
       "name": "onyxpoint-gpasswd"
     },
     {
-      "name": "simp-concat",
-      "version_requirement": ">= 2.0.0-0"
+      "name": "simp-simpcat",
+      "version_requirement": ">= 2.0.0"
     },
     {
       "name": "simp-functions",
-      "version_requirement": ">= 2.0.0-0"
+      "version_requirement": ">= 2.0.0"
     },
     {
       "name": "simp-named",
-      "version_requirement": ">= 4.2.0-2"
+      "version_requirement": ">= 4.2.0"
     },
     {
       "name": "simp-rsync",
-      "version_requirement": ">= 2.0.0-0"
+      "version_requirement": ">= 2.0.0"
     },
     {
       "name": "simp-site",
-      "version_requirement": ">= 2.0.0-0"
+      "version_requirement": ">= 2.0.0"
     },
     {
       "name": "simp-sssd",
-      "version_requirement": ">= 2.0.0-0"
+      "version_requirement": ">= 2.0.0"
     },
     {
       "name": "simp-stunnel",
-      "version_requirement": ">= 4.1.0-2"
+      "version_requirement": ">= 4.1.0"
     },
     {
       "name": "simp-sysctl",
-      "version_requirement": ">= 4.1.0-2"
+      "version_requirement": ">= 4.1.0"
     },
     {
       "name": "simp-pam",
@@ -68,6 +68,10 @@
     },
     {
       "name": "simp-upstart"
+    },
+    {
+      "name": "simp-simplib",
+      "version_requirement": ">= 1.0.0"
     }
   ],
   "operatingsystem_support": [
